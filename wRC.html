@@ -74,7 +74,7 @@ function predictStats(event) {
 <div class="w3-container w3-padding-32" id="projects">
   <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">wRC+</h3>
   <!-- Modified form: added IDs and changed the event handler -->
-  <form id="predictForm">
+<form id="predictForm" onsubmit="predictStats(event)">
     <input class="w3-input w3-border" type="text" placeholder="Name" required id="playerName" name="Name">
     <label for="yearsToPredict">Years to predict:</label>
     <select name="years" id="yearsToPredict">
@@ -84,11 +84,11 @@ function predictStats(event) {
       <option value="4">4</option>
       <option value="5">5</option>
     </select>
-    <div>
-    <button class="w3-button w3-black w3-section" type="button" onclick="predictStats(event)">
+    <button class="w3-button w3-black w3-section" type="submit">
       <i class="fa fa-paper-plane"></i> PREDICT
     </button>
-    </form>
+</form>
+
   </div>
   <!-- Div to display the result -->
   <div id="result"></div>
