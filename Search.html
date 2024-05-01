@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Baseball Analytics Sign or Drop</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  function fetchData() {
+    var playerName = $('#playerName').val();
+    var year = $('#year').val();
+    $.ajax({
+      url: 'https://your-api-id.execute-api.region.amazonaws.com/prod/player',  // Replace with your actual API Gateway URL
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({playerName: playerName, year: year}),
+      success: function(response) {
+        alert('Predicted wRC+: ' + response.predicted_wRC_plus);
+      },
+      error: function(xhr, status, error) {
+        alert('Error: ' + xhr.responseText);
+      }
+    });
+  }
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" id="playerName" placeholder="Enter Player Name">
+    <input type="number" id="year" placeholder="Enter Year">
+    <button onclick="fetchData()">Predict Performance</button>
+  </div>
+</body>
+</html>
